@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+   
+    <script src="https://kit.fontawesome.com/f97ff5e185.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="heading">
+        Task and Notes Manager  
+    </div>
+    <br>
+    <div id="table_div">
+            <table id="table" border="1" >
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th onclick="sortTable(3)">Due Date</th>
+                    <th onclick="sortTable(4)">Status</th>
+                    <th onclick="sortTable(5)">Priority</th>
+                    <th>Edit</th>
+                </tr>
+            </table>
+        <!--The Modal-->
+        <div id='myModal' class='modal'>
+            <!-- Modal content -->
+               <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <form action="/todos" method="POST">
+                       <input type="date" name="due" id="date" required>
+                       <br>
+                       <select name="priority" id="priority">
+                           <option value="High">High</option>
+                           <option value="Medium" selected>Medium</option>
+                           <option value="Low">Low</option>
+                       </select>
+                       <br>
+                       <input type="checkbox" id="completed" name="taskComplted" value="Completed">
+                       <label for="completed"> completed</label><br>
+                       <input type="submit" value="Update" name="update" id="update">
+                    </form>
+               </div>
+        </div>
+    </div>
+    <br>
+    <button type="button" class="collapsible"> Click to add a new Task <i class="fa fa-plus" aria-hidden="true"></i></button>
+        <div class="content">          
+                <form action="/todos" class="fs-title" id="msform" method="POST">
+                    <label for="title" >Title</label>
+                    <input type="text" name="title" id="title" placeholder="Enter title" required>
+                        <br>
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" cols="6" rows="3" placeholder="Enter details"></textarea>
+                        <br>
+                    <label for="due" >Due Date:</label>
+                    <input type="date" name="due" id="due" required>   
+                        <br>
+                    <label for="priority">Priority</label>
+                    <select name="priority" id="priority">
+                        <option value="High">High</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                        <br>
+                    <button type="submit" class="next action-button" id="submit">ADD</button>
+                </form>
+            </div> 
+            <script src="script.js"></script>
+    </body>
+</html>
